@@ -1,0 +1,19 @@
+.icaro-container { padding: 20px; max-width: 1000px; margin: auto; }
+.header { display: flex; justify-content: space-between; border-bottom: 2px solid #333; margin-bottom: 20px; }
+
+.main-layout { 
+    display: grid; 
+    grid-template-columns: 200px 1fr; 
+    grid-template-rows: auto auto; 
+    gap: 20px; 
+}
+
+.foto-box { border: 2px dashed #f00; height: 250px; display: flex; align-items: center; justify-content: center; }
+.info-box { border: 2px solid #f00; padding: 15px; }
+.bottom-panel { grid-column: span 2; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; border: 2px solid #f00; padding: 15px; }
+
+.search-input { width: 100%; padding: 10px; font-size: 18px; }
+.foto-placeholder { color: #f00; font-weight: bold; }
+.comentarios-box textarea { width: 100%; height: 80px; }
+.ok { color: green; font-weight: bold; }
+.error { color: red; font-weight: bold; }

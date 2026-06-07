@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f8fafc; /* Gris muy suave */
+  color: #1e293b; /* Azul oscuro para texto */
+}
+
+/* Estilo para las "Tarjetas" */
+.card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+}
