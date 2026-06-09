@@ -70,6 +70,52 @@ app.get('/empleado/:dni', async (req, res) => {
     }
 });
 
+app.post('/login', async (req, res) => {
+    const { dni, password } = req.body;
+    
+    // Consulta la base de datos
+    const result = await pool.query(
+        'SELECT * FROM usuarios WHERE dni = $1 AND password = $2', 
+        [dni, password]
+    );
+
+    if (result.rows.length > 0) {
+        const usuario = result.rows[0];
+        // Retornamos el rol para que el frontend sepa qué vista mostrar
+        res.json({ success: true, rol: usuario.rol, nombre: usuario.nombre });
+    } else {
+        res.status(401).json({ success: false, message: 'Credenciales inválidas' });
+    }
+});
+
+// RUTA: Crear nuevo usuario (Solo el Admin debería poder llamar a esto)
+app.post('/usuarios', async (req, res) => {
+    const { dni, password, rol, nombre } = req.body;
+    try {
+        const result = await pool.query(
+            'INSERT INTO usuarios (dni, password, rol, nombre) VALUES ($1, $2, $3, $4) RETURNING *',
+            [dni, password, rol, nombre]
+        );
+        res.json({ success: true, usuario: result.rows[0] });
+    } catch (err) {
+        res.status(500).json({ success: false, message: 'Error al crear usuario' });
+    }
+});
+
+// RUTA: Listar usuarios (para la tabla del Admin)
+app.get('/usuarios', async (req, res) => {
+    try {
+        const result = await pool.query('SELECT dni, nombre, rol FROM usuarios');
+        res.json(result.rows);
+    } catch (err) {
+        res.status(500).json({ success: false, message: 'Error al obtener usuarios' });
+    }
+});
+
+app.delete('/usuarios/:dni', async (req, res) => {
+    await pool.query('DELETE FROM usuarios WHERE dni = $1', [req.params.dni]);
+    res.json({ success: true });
+});
 
 app.listen(PORT, () => {
     console.log(`Backend corriendo en http://localhost:${PORT}`);

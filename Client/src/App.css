@@ -1,15 +1,33 @@
-body {
+/* RESET GLOBAL - ICARO TEMA CLARO */
+* {
   margin: 0;
-  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  background-color: #f8fafc; /* Gris muy suave */
-  color: #1e293b; /* Azul oscuro para texto */
+  padding: 0;
+  box-shadow: none !important; /* Eliminamos sombras para minimalismo */
+  text-decoration: none;
+  list-style: none;
+  color-scheme: light; /* OBLIGAMOS AL NAVEGADOR A USAR TEMA CLARO */
 }
 
-/* Estilo para las "Tarjetas" */
-.card {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-  padding: 20px;
-  border: 1px solid #e2e8f0;
+body {
+  background-color: #F8FAFC; /* Fondo suave */
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  color: #0F172A; /* Texto azul marino oscuro */
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* UTILIDADES - PANEL CORPORATIVO */
+.card-icaro {
+  background-color: #FFFFFF;
+  border: 1px solid #494a4b; /* Borde un poco más marcado para definir el relieve */
+  border-radius: 4px;
+  padding: 24px;
+  
+  /* RELIEVE AUMENTADO: Sombra más oscura y extendida */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+  letter-spacing: -0.5px;
 }
